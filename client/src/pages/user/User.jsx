@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./user.css";
-import { Link } from "react-router-dom";
 import {
   CalendarToday,
   LocationCity,
@@ -9,15 +10,71 @@ import {
   PhoneAndroid,
   Publish,
 } from "@mui/icons-material";
+import { useMatch } from "react-router-dom";
 
-function User() {
+const User = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    username: "",
+    fullname: "",
+    email: "",
+    password: "",
+    phone: "",
+    address: "",
+    gender: "",
+    active: "",
+  });
+  const {
+    params: { id },
+  } = useMatch("/user/:id");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/students/edit-student/" + id)
+      .then((res) =>
+        setData({
+          username: res.data.username,
+          fullname: res.data.fullname,
+          email: res.data.email,
+          password: res.data.password,
+          phone: res.data.phone,
+          address: res.data.address,
+          gender: res.data.gender,
+          active: res.data.active,
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const studentObject = {
+      username: data.username,
+      fullname: data.fullname,
+      password: data.password,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      gender: data.gender,
+      active: data.active,
+    };
+    axios
+      .put("http://localhost:4000/students/update-student/" + id, studentObject)
+      .then((res) => {
+        window.alert("Updated Succesfully !");
+        navigate("/users");
+      });
+  };
+
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Edit User</h1>
-        <Link to="/newuser">
-          <button className="userAddButton">Create</button>
-        </Link>
+        <h1 className="userTitle">Edit Student</h1>
+        {/* <Link to="/newuser">
+    <button className="userAddButton">Create</button>
+  </Link> */}
       </div>
       <div className="userContainer">
         <div className="userShow">
@@ -36,7 +93,7 @@ function User() {
             <span className="userShowTitle">Account Details</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">Annabeck99</span>
+              <span className="userShowInfoTitle">{data.username}</span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
@@ -59,7 +116,7 @@ function User() {
         </div>
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit</span>
-          <form className="userUpdateForm">
+          <form className="userUpdateForm" onSubmit={onSubmit}>
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
                 <label>Username</label>
@@ -67,6 +124,10 @@ function User() {
                   type="text"
                   placeholder="annabeck99"
                   className="userUpdateInput"
+                  value={data.username}
+                  onChange={(event) =>
+                    setData({ ...data, username: event.target.value })
+                  }
                 />
               </div>
               <div className="userUpdateItem">
@@ -75,6 +136,10 @@ function User() {
                   type="text"
                   placeholder="Anna Becker"
                   className="userUpdateInput"
+                  value={data.fullname}
+                  onChange={(event) =>
+                    setData({ ...data, fullname: event.target.value })
+                  }
                 />
               </div>
               <div className="userUpdateItem">
@@ -83,6 +148,10 @@ function User() {
                   type="text"
                   placeholder="Annabeck99@gmail.com"
                   className="userUpdateInput"
+                  value={data.email}
+                  onChange={(event) =>
+                    setData({ ...data, email: event.target.value })
+                  }
                 />
               </div>
               <div className="userUpdateItem">
@@ -91,6 +160,10 @@ function User() {
                   type="text"
                   placeholder="+1 123 4567"
                   className="userUpdateInput"
+                  value={data.phone}
+                  onChange={(event) =>
+                    setData({ ...data, phone: event.target.value })
+                  }
                 />
               </div>
               <div className="userUpdateItem">
@@ -99,8 +172,63 @@ function User() {
                   type="text"
                   placeholder="Address"
                   className="userUpdateInput"
+                  value={data.address}
+                  onChange={(event) =>
+                    setData({ ...data, address: event.target.value })
+                  }
                 />
               </div>
+              <div className="userUpdateItem">
+                <label>Gender</label>
+                <div className="newUserGender">
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="male"
+                    checked={data.gender === "male" ? "checked" : ""}
+                    value=""
+                    onChange={(event) =>
+                      setData({ ...data, gender: event.target.value })
+                    }
+                  />
+                  <label For="male">Male</label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    checked={data.gender === "female" ? "checked" : ""}
+                    value=""
+                    onChange={(event) =>
+                      setData({ ...data, gender: event.target.value })
+                    }
+                  />
+                  <label For="female">Female</label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="other"
+                    checked={data.gender === "other" ? "checked" : ""}
+                    value=""
+                    onChange={(event) =>
+                      setData({ ...data, gender: event.target.value })
+                    }
+                  />
+                  <label For="other">Other</label>
+                </div>
+              </div>
+              <label>Active</label>
+              <select
+                className="newUserSelect"
+                name="active"
+                id="active"
+                onChange={(event) =>
+                  setData({ ...data, active: event.target.value })
+                }
+              >
+                <option value="">Please Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
             </div>
 
             <div className="userUpdateRight">
@@ -116,13 +244,15 @@ function User() {
 
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton" type="submit">
+                Update
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default User;

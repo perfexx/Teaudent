@@ -108,6 +108,15 @@
   font-size: 14px;
 }
 
+.newUserGender > input {
+  margin-top: 14px;
+}
+
+.newUserGender > label {
+  margin: 10px;
+  font-size: 18px;
+  color: #555;
+}
 .userUpdateInput {
   border: none;
   width: 250px;
@@ -152,4 +161,9 @@
   font-weight: 600;
   background-color: blue;
   color: white;
+}
+
+.newUserSelect {
+  height: 40px;
+  border-radius: 5px;
 }

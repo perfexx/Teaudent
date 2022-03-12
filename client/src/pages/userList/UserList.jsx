@@ -9,6 +9,12 @@ const UserList = () => {
   const [student, setStudent] = useState([]);
 
   const handleDelete = (_id) => {
+    axios
+      .delete("http://localhost:4000/students/delete-student/" + _id)
+      .then((res) => window.alert("Student deleted succesfully !"))
+      .catch((error) => {
+        console.log(error);
+      });
     setStudent(student.filter((item) => item._id !== _id));
   };
 
@@ -54,26 +60,23 @@ const UserList = () => {
 
   return (
     <div className="usersList">
-      {/* {student &&
-        student.map((stu) => {
-          return (
-            <div key={stu._id}>
-              <p>{stu.username}</p>
-              <p>{stu.email}</p>
-              <p>{stu._id}</p>
-            </div>
-          );
-        })} */}
+      <Link to="/newuser">
+        <button className="userAddButton">Create</button>
+      </Link>
 
-      <DataGrid
-        rows={student}
-        columns={columns}
-        pageSize={8}
-        rowsPerPageOptions={[8]}
-        checkboxSelection
-        disableSelectionOnClick
-        getRowId={(student) => student._id}
-      />
+      {student.length ? (
+        <DataGrid
+          rows={student}
+          columns={columns}
+          pageSize={8}
+          rowsPerPageOptions={[8]}
+          checkboxSelection
+          disableSelectionOnClick
+          getRowId={(student) => student._id}
+        />
+      ) : (
+        <h1>loading...</h1>
+      )}
     </div>
   );
 };
