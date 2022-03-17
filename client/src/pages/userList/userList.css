@@ -1,20 +1,23 @@
 .usersList {
   flex: 4;
-  padding: 0px 20px;
+  padding: 20px 9px;
 }
 
-.userlist {
+/* .userCreate {
+  display: flex;
+} */
+/* .userlist {
   display: flex;
   align-items: center;
-}
+} */
 
-.userListImg {
+/* .userListImg {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 10px;
-}
+} */
 
 .userListEdit {
   border: none;
@@ -32,7 +35,6 @@
 }
 
 .userAddButton {
-  width: 150px;
   border: none;
   padding: 5px;
   background-color: teal;

@@ -1,0 +1,27 @@
+.commingEvents {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.49);
+  box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.49);
+}
+
+.commingEventsTitle {
+  margin-bottom: 20px;
+}
+
+.CalendarShowBt {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 10px;
+  background-color: #77e486;
+  color: #01610e;
+  cursor: pointer;
+  font-weight: bold;
+}
+.widgetSmIcon {
+  font-size: 16px;
+  margin-right: 5px;
+}

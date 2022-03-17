@@ -2,13 +2,14 @@ import React from "react";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@mui/icons-material";
 import avatar from "../../img/avatar.png";
+import logo from "../../img/logo.png";
 
 function Topbar() {
   return (
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">Teaudent</span>
+          <img className="logo" src={logo} alt="Teaudent" />
         </div>
         <div className="topRight">
           <div className="topbarContainer">

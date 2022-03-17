@@ -5,6 +5,8 @@ let bodyParser = require("body-parser");
 let dbConfig = require("./database/db");
 // Express Route
 const studentRoute = require("../server/routes/student.route");
+const coursesRoute = require("../server/routes/courses.route");
+
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
 mongoose
@@ -28,6 +30,7 @@ app.use(
 );
 app.use(cors());
 app.use("/students", studentRoute);
+app.use("/courses", coursesRoute);
 
 // PORT
 const port = process.env.PORT || 4000;

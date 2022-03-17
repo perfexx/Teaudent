@@ -60,9 +60,9 @@ const UserList = () => {
 
   return (
     <div className="usersList">
-      <Link to="/newuser">
+      {/* <Link to="/newuser">
         <button className="userAddButton">Create</button>
-      </Link>
+      </Link> */}
 
       {student.length ? (
         <DataGrid
