@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useMatch } from "react-router-dom";
 import axios from "axios";
 import "./user.css";
 import {
@@ -10,7 +10,6 @@ import {
   PhoneAndroid,
   Publish,
 } from "@mui/icons-material";
-import { useMatch } from "react-router-dom";
 
 const User = () => {
   const navigate = useNavigate();
@@ -63,8 +62,7 @@ const User = () => {
     axios
       .put("http://localhost:4000/students/update-student/" + id, studentObject)
       .then((res) => {
-        window.alert("Updated Succesfully !");
-        navigate("/users");
+        navigate("/students");
       });
   };
 

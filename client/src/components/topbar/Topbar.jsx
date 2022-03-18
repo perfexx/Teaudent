@@ -3,6 +3,7 @@ import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@mui/icons-material";
 import avatar from "../../img/avatar.png";
 import logo from "../../img/logo.png";
+import { Tooltip } from "@mui/material";
 
 function Topbar() {
   return (
@@ -13,15 +14,21 @@ function Topbar() {
         </div>
         <div className="topRight">
           <div className="topbarContainer">
-            <NotificationsNone />
+            <Tooltip title="Notifications">
+              <NotificationsNone />
+            </Tooltip>
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarContainer">
-            <Language />
+            <Tooltip title="Language">
+              <Language />
+            </Tooltip>
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarContainer">
-            <Settings />
+            <Tooltip title="Setting">
+              <Settings />
+            </Tooltip>
           </div>
           <img src={avatar} alt="" className="topAvatar" />
         </div>

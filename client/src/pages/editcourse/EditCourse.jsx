@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "./newCourse.css";
 import axios from "axios";
+import { useMatch, useNavigate } from "react-router-dom";
+import "./editCourse.css";
+import { Snackbar } from "@mui/material";
+import MuiAlert from "@mui/material/Alert";
 
-const NewCourse = () => {
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const EditCourse = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     courseName: "",
     courseDesc: "",
@@ -10,6 +18,40 @@ const NewCourse = () => {
     creator: "",
     material: "",
   });
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const {
+    params: { id },
+  } = useMatch("/editcourse/:id");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/courses/edit-course/" + id)
+      .then((res) =>
+        setData({
+          courseName: res.data.courseName,
+          courseDesc: res.data.courseDesc,
+          participants: res.data.participants,
+          creator: res.data.creator,
+          material: res.data.material,
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -20,25 +62,21 @@ const NewCourse = () => {
       creator: data.creator,
       material: data.material,
     };
-
     axios
-      .post("http://localhost:4000/courses/create-course", courseObject)
-      .then((res) =>
-        setData({
-          courseName: "",
-          courseDesc: "",
-          participants: "",
-          creator: "",
-          material: "",
-        })
-      );
+      .put("http://localhost:4000/courses/update-course/" + id, courseObject)
+      .then((res) => navigate("/courses"));
   };
 
   return (
-    <div className="newCourse">
-      <h1 className="newCourseTitle">NewCourse</h1>
-      <form className="newCourseForm" onSubmit={onSubmit}>
-        <div className="newCourseItem">
+    <div className="editCourse">
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Course Updated Successfully !
+        </Alert>
+      </Snackbar>
+      <h1 className="editCourseTitle">EditCourse</h1>
+      <form className="editCourseForm" onSubmit={onSubmit}>
+        <div className="editCourseItem">
           <label>Coursename</label>
           <input
             type="text"
@@ -49,7 +87,7 @@ const NewCourse = () => {
             }
           />
         </div>
-        <div className="newCourseItem">
+        <div className="editCourseItem">
           <label>courseDesc</label>
           <input
             type="text"
@@ -60,7 +98,7 @@ const NewCourse = () => {
             }
           />
         </div>
-        <div className="newCourseItem">
+        <div className="editCourseItem">
           <label>participants</label>
           <input
             type="text"
@@ -71,7 +109,7 @@ const NewCourse = () => {
             }
           />
         </div>
-        <div className="newCourseItem">
+        <div className="editCourseItem">
           <label>creator</label>
           <input
             type="text"
@@ -82,7 +120,7 @@ const NewCourse = () => {
             }
           />
         </div>
-        <div className="newCourseItem">
+        <div className="editCourseItem">
           <label>material</label>
           <input
             type="text"
@@ -94,12 +132,16 @@ const NewCourse = () => {
           />
         </div>
 
-        <button className="newCourseButton" type="submit">
-          Create
+        <button
+          className="editCourseButton"
+          type="submit"
+          onClick={handleClick}
+        >
+          Update
         </button>
       </form>
     </div>
   );
 };
 
-export default NewCourse;
+export default EditCourse;

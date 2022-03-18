@@ -8,6 +8,7 @@ import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
 import Courses from "./pages/courses/Courses";
 import NewCourse from "./pages/newCourse/NewCourse";
+import EditCourse from "./pages/editcourse/EditCourse";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/newuser" element={<NewUser />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/newcourse" element={<NewCourse />} />
+          <Route path="/editcourse/:userId" element={<EditCourse />} />
         </Routes>
       </div>
     </Router>
