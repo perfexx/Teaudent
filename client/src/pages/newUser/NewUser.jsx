@@ -44,7 +44,7 @@ const NewUser = () => {
 
   return (
     <div className="newUser">
-      <h1 className="newUserTitle">NewUser</h1>
+      <h1 className="newUserTitle">Create New Student</h1>
       <form className="newUserForm" onSubmit={onSubmit}>
         <div className="newUserItem">
           <label>Username</label>

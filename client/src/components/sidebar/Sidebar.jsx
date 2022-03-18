@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./sidebar.css";
 import {
   Home,
@@ -11,10 +11,14 @@ import {
   Grading,
   EventAvailable,
   School,
+  KeyboardArrowDown,
+  KeyboardArrowRight,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-function Sidebar() {
+const Sidebar = () => {
+  const [expand, setExpand] = useState(false);
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -28,12 +32,19 @@ function Sidebar() {
               </li>
             </Link>
 
-            <Link to="/students" className="link">
-              <li className="sidebarListItem">
-                <PermIdentity className="sidebarIcon" />
-                Students
-              </li>
-            </Link>
+            <li className="sidebarListItem" onClick={() => setExpand(!expand)}>
+              <PermIdentity className="sidebarIcon" />
+              Students
+              <KeyboardArrowRight className="sidebarArrow" />
+            </li>
+            <ul className={`sidebarSubItems ${expand ? "active" : ""}`}>
+              <Link to="/students" className="link">
+                <li className="sidebarSubListItem">List</li>
+              </Link>
+              <Link to="/newuser" className="link">
+                <li className="sidebarSubListItem">Create</li>
+              </Link>
+            </ul>
             <li className="sidebarListItem">
               <Quiz className="sidebarIcon" />
               Exams
@@ -79,6 +90,6 @@ function Sidebar() {
       </div>
     </div>
   );
-}
+};
 
 export default Sidebar;
