@@ -9,6 +9,9 @@ import NewUser from "./pages/newUser/NewUser";
 import Courses from "./pages/courses/Courses";
 import NewCourse from "./pages/newCourse/NewCourse";
 import EditCourse from "./pages/editcourse/EditCourse";
+import NewTopic from "./pages/forum/NewTopic";
+import Topics from "./pages/forum/Topics";
+import EditTopic from "./pages/forum/EditTopic";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/newcourse" element={<NewCourse />} />
           <Route path="/editcourse/:userId" element={<EditCourse />} />
+          <Route path="/newtopic" element={<NewTopic />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/topic/:userId" element={<EditTopic />} />
         </Routes>
       </div>
     </Router>

@@ -6,6 +6,7 @@ let dbConfig = require("./database/db");
 // Express Route
 const studentRoute = require("../server/routes/student.route");
 const coursesRoute = require("../server/routes/courses.route");
+const topicsRoute = require("../server/routes/topics.route");
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -31,6 +32,7 @@ app.use(
 app.use(cors());
 app.use("/students", studentRoute);
 app.use("/courses", coursesRoute);
+app.use("/topics", topicsRoute);
 
 // PORT
 const port = process.env.PORT || 4000;

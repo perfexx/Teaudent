@@ -1,0 +1,42 @@
+.newTopic {
+  flex: 4;
+  padding: 20px;
+}
+.newTopicForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.newTopicItem {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.newTopicItem > label {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgb(163, 163, 163);
+}
+
+.newTopicItem > input {
+  height: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.newTopicButton {
+  width: 200px;
+  border: none;
+  background-color: darkblue;
+  color: white;
+  padding: 7px 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+}

@@ -17,7 +17,16 @@ import {
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const [expand, setExpand] = useState(false);
+  // const [expand, setExpand] = useState({
+  //   data1: "false",
+  //   data2: "false",
+  // });
+
+  // const handleExpand = (data) => {
+  //   // console.log(e);
+  //   // e.stopPropagation();
+  //   setExpand(!expand.data1);
+  // };
 
   return (
     <div className="sidebar">
@@ -32,12 +41,16 @@ const Sidebar = () => {
               </li>
             </Link>
 
-            <li className="sidebarListItem" onClick={() => setExpand(!expand)}>
+            <li
+              className="sidebarListItem"
+              // onClick={(data1) => handleExpand(data1)}
+            >
               <PermIdentity className="sidebarIcon" />
               Students
               <KeyboardArrowRight className="sidebarArrow" />
             </li>
-            <ul className={`sidebarSubItems ${expand ? "active" : ""}`}>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data1 ? "active" : ""}`}> */}
               <Link to="/students" className="link">
                 <li className="sidebarSubListItem">List</li>
               </Link>
@@ -52,7 +65,17 @@ const Sidebar = () => {
             <li className="sidebarListItem">
               <Forum className="sidebarIcon" />
               Forum
+              <KeyboardArrowRight className="sidebarArrow" />
             </li>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
+              <Link to="/topics" className="link">
+                <li className="sidebarSubListItem">My Topics</li>
+              </Link>
+              <Link to="/newtopic" className="link">
+                <li className="sidebarSubListItem">Create Topic</li>
+              </Link>
+            </ul>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Reports
@@ -65,12 +88,24 @@ const Sidebar = () => {
 
           <h3 className="sidebarTitle">My Courses</h3>
           <ul className="sidebarList">
-            <Link to="/courses" className="link">
-              <li className="sidebarListItem">
-                <School className="sidebarIcon" />
-                Courses
-              </li>
-            </Link>
+            <li
+              className="sidebarListItem"
+              // onClick={(data2) => handleExpand(data2)}
+            >
+              <School className="sidebarIcon" />
+              Courses
+              <KeyboardArrowRight className="sidebarArrow" />
+            </li>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
+              <Link to="/courses" className="link">
+                <li className="sidebarSubListItem">My Courses</li>
+              </Link>
+              <Link to="/newcourse" className="link">
+                <li className="sidebarSubListItem">New Course</li>
+              </Link>
+            </ul>
+
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PeopleOutline className="sidebarIcon" />
