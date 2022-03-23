@@ -60,7 +60,7 @@ const CourseInfo = () => {
       </Snackbar>
       {course.map((d) => {
         return (
-          <div className="courseItem">
+          <div className="courseItem" key={d._id}>
             <img className="courseItemImg" src={courseImage} alt="course" />
             <span className="courseTitle">{d.courseName}</span>
             <div className="courseDescContainer">

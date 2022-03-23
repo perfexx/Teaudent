@@ -80,10 +80,20 @@ const Sidebar = () => {
               <Timeline className="sidebarIcon" />
               Reports
             </li>
+
             <li className="sidebarListItem">
               <EventAvailable className="sidebarIcon" />
               Calendar
             </li>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
+              <Link to="/showevents" className="link">
+                <li className="sidebarSubListItem">My Events</li>
+              </Link>
+              <Link to="/newevent" className="link">
+                <li className="sidebarSubListItem">New Event</li>
+              </Link>
+            </ul>
           </ul>
 
           <h3 className="sidebarTitle">My Courses</h3>

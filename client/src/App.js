@@ -12,6 +12,8 @@ import EditCourse from "./pages/editcourse/EditCourse";
 import NewTopic from "./pages/forum/NewTopic";
 import Topics from "./pages/forum/Topics";
 import EditTopic from "./pages/forum/EditTopic";
+import ShowEvents from "./pages/calendar/ShowEvents";
+import NewEvent from "./pages/calendar/NewEvent";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/newtopic" element={<NewTopic />} />
           <Route path="/topics" element={<Topics />} />
           <Route path="/topic/:userId" element={<EditTopic />} />
+          <Route path="/showevents" element={<ShowEvents />} />
+          <Route path="/newevent" element={<NewEvent />} />
         </Routes>
       </div>
     </Router>
