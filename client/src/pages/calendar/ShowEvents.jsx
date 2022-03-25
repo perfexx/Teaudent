@@ -7,7 +7,11 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 // moment.tz.setDefault("America/Los_Angeles");
 const localizer = momentLocalizer(moment); // or globalizeLocalizer
 const myEventsList = [
-  { start: new Date(), end: new Date(), title: "special event" },
+  {
+    start: new Date("2022, 03, 02"),
+    end: new Date("2022, 03, 05"),
+    title: "special event",
+  },
   { start: new Date(), end: new Date(), title: "special event2" },
   { start: new Date(), end: new Date(), title: "special event2" },
 ];

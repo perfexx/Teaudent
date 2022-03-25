@@ -7,39 +7,51 @@ import AdapterMoment from "@mui/lab/AdapterMoment";
 import moment from "moment";
 
 const NewEvent = () => {
-  const [svalue, setsValue] = useState(null);
-  const [evalue, seteValue] = useState(null);
+  const [event, setEvent] = useState({
+    title: "",
+    start: null,
+    end: null,
+  });
 
   const handleAddEvent = (date) => {
     // setAllEvent([...allEvent, newEvent]);
-    console.log(date._d);
+    const beginDate = moment(date._d).format("YYYY,MM,DD");
+    setEvent({
+      title: "",
+      start: beginDate,
+      end: null,
+    });
+
+    // console.log(event);
   };
 
   return (
     <div className="newEvent">
-      <TextField label="Title" variant="outlined" />
+      <TextField
+        label="Title"
+        variant="outlined"
+        onChange={(e) => setEvent({ ...event, title: e.target.value })}
+      />
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <DatePicker
           label="Start Date"
-          format="MM/dd/yyyy"
-          value={svalue}
+          // format="MM/dd/yyyy"
+          value={event.start}
           onChange={handleAddEvent}
           renderInput={(params) => <TextField {...params} />}
         />
 
         <DatePicker
           label="End Date"
-          value={evalue}
-          onChange={(newValue) => {
-            seteValue(newValue);
-          }}
+          value={event.end}
+          onChange={() => setEvent(event.end)}
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>
       <Button variant="contained" onClick={handleAddEvent}>
         Add Event
       </Button>
-      <p>{JSON.stringify({ svalue })}</p>
+      <p>{console.log(event)}</p>
     </div>
   );
 };
