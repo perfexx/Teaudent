@@ -60,8 +60,18 @@ const Sidebar = () => {
             </ul>
             <li className="sidebarListItem">
               <Quiz className="sidebarIcon" />
-              Exams
+              Quiz
+              <KeyboardArrowRight className="sidebarArrow" />
             </li>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
+              <Link to="/showquiz" className="link">
+                <li className="sidebarSubListItem">My Quiz</li>
+              </Link>
+              <Link to="/newquiz" className="link">
+                <li className="sidebarSubListItem">New Quiz</li>
+              </Link>
+            </ul>
             <li className="sidebarListItem">
               <Forum className="sidebarIcon" />
               Forum

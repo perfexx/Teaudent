@@ -104,14 +104,13 @@ const ShowEvents = () => {
         <form>
           <DialogTitle>Update / Delete</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here.
+            <DialogContentText sx={{ mb: 3 }}>
+              You can Update or Delete events here.
             </DialogContentText>
 
             <TextField
               margin="dense"
-              id="name"
+              sx={{ mb: 5 }}
               label="Title"
               fullWidth
               variant="standard"
@@ -148,10 +147,20 @@ const ShowEvents = () => {
             </LocalizationProvider>
           </DialogContent>
           <DialogActions>
-            <Button type="submit" onClick={deleteHandler}>
+            <Button
+              type="submit"
+              onClick={deleteHandler}
+              color="error"
+              variant="contained"
+            >
               Delete
             </Button>
-            <Button type="submit" onClick={editHandler}>
+            <Button
+              type="submit"
+              onClick={editHandler}
+              color="success"
+              variant="contained"
+            >
               Update
             </Button>
           </DialogActions>
