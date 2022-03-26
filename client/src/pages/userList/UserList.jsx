@@ -4,6 +4,8 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./userList.css";
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
 
 const UserList = () => {
   const [student, setStudent] = useState([]);
@@ -75,7 +77,19 @@ const UserList = () => {
           getRowId={(student) => student._id}
         />
       ) : (
-        <h1>loading...</h1>
+        <Box sx={{ width: 1 }}>
+          <Skeleton sx={{ height: 90 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+          <Skeleton animation="wave" sx={{ height: 40 }} />
+        </Box>
       )}
     </div>
   );
