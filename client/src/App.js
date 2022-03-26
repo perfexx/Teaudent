@@ -14,6 +14,7 @@ import Topics from "./pages/forum/Topics";
 import EditTopic from "./pages/forum/EditTopic";
 import ShowEvents from "./pages/calendar/ShowEvents";
 import NewEvent from "./pages/calendar/NewEvent";
+import EditEvent from "./pages/calendar/EditEvent";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/topics" element={<Topics />} />
           <Route path="/topic/:userId" element={<EditTopic />} />
           <Route path="/showevents" element={<ShowEvents />} />
+          <Route path="/editevent/:eventId" element={<EditEvent />} />
 
           <Route path="/newevent" element={<NewEvent />} />
         </Routes>

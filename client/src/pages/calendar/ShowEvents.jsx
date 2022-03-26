@@ -5,7 +5,8 @@ import moment from "moment";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import axios from "axios";
-// import { useMatch, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -15,14 +16,20 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-// import DatePicker from "@mui/lab/DatePicker";
-// import AdapterMoment from "@mui/lab/AdapterMoment";
+import DatePicker from "@mui/lab/DatePicker";
+import AdapterMoment from "@mui/lab/AdapterMoment";
 
 const localizer = momentLocalizer(moment);
 
 const ShowEvents = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const [events, setEvents] = useState([]);
+  const [selected, setSelected] = useState({
+    title: null,
+    start: null,
+    end: null,
+  });
   const [open, setOpen] = useState(false);
   // const [data, setData] = useState({
   //   title: "",
@@ -30,9 +37,13 @@ const ShowEvents = () => {
   //   end: "",
   // });
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
+    // navigate("/editevent/", { events_id });
+    setSelected(e);
     setOpen(true);
+    // window.alert(e._id);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -50,38 +61,33 @@ const ShowEvents = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:4000/events/edit-event/" + events._id)
-  //     .then((res) =>
-  //       setData({
-  //         title: res.data.title,
-  //         start: res.data.start,
-  //         end: res.data.end,
-  //       })
-  //     )
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  const editHandler = (e) => {
+    e.preventDefault();
+    const eventObject = {
+      title: selected.title,
+      start: selected.start,
+      end: selected.end,
+    };
 
-  // const onSelectEvent = () => {
-  //   window.alert("clicked");
-  // };
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   const eventsObject = {
-  //     title: data.title,
-  //     start: data.start,
-  //     end: data.end,
-  //   };
-  //   axios
-  //     .put(
-  //       "http://localhost:4000/events/update-event/" + events._id,
-  //       eventsObject
-  //     )
-  //     .then((res) => navigate("/showevents"));
-  // };
+    axios
+      .put(
+        "http://localhost:4000/events/update-event/" + selected._id,
+        eventObject
+      )
+      .then((res) => setOpen(false));
+
+    window.location.reload(true);
+  };
+
+  const deleteHandler = () => {
+    axios
+      .delete("http://localhost:4000/events/delete-event/" + selected._id)
+      .then((res) => setOpen(false))
+      .catch((error) => {
+        console.log(error);
+      });
+    window.location.reload(true);
+  };
 
   return (
     <div className="showEvents">
@@ -95,46 +101,61 @@ const ShowEvents = () => {
       />
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Update / Delete</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
+        <form>
+          <DialogTitle>Update / Delete</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To subscribe to this website, please enter your email address
+              here.
+            </DialogContentText>
 
-          <TextField
-            margin="dense"
-            id="name"
-            label="Title"
-            fullWidth
-            variant="standard"
-            value={events.title}
-            autoFocus
-          />
-          {/* <LocalizationProvider dateAdapter={AdapterMoment}>
-            <DatePicker
-              label="Start Date"
-              value={data.start}
+            <TextField
+              margin="dense"
+              id="name"
+              label="Title"
+              fullWidth
+              variant="standard"
+              value={selected.title}
+              // autoFocus
               onChange={(e) =>
-                setData({ ...data, start: moment(e).format("YYYY,MM,DD") })
+                setSelected({ ...selected, title: e.target.value })
               }
-              renderInput={(params) => <TextField {...params} />}
             />
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+              <DatePicker
+                label="Start Date"
+                value={selected.start}
+                onChange={(e) =>
+                  setSelected({
+                    ...selected,
+                    start: moment(e).format("YYYY,MM,DD"),
+                  })
+                }
+                renderInput={(params) => <TextField {...params} />}
+              />
 
-            <DatePicker
-              label="End Date"
-              value={data.end}
-              onChange={(e) =>
-                setData({ ...data, end: moment(e).format("YYYY,MM,DD") })
-              }
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider> */}
-        </DialogContent>
-        <DialogActions>
-          <Button>Delete</Button>
-          <Button>Update</Button>
-        </DialogActions>
+              <DatePicker
+                label="End Date"
+                value={selected.end}
+                onChange={(e) =>
+                  setSelected({
+                    ...selected,
+                    end: moment(e).format("YYYY,MM,DD"),
+                  })
+                }
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
+          </DialogContent>
+          <DialogActions>
+            <Button type="submit" onClick={deleteHandler}>
+              Delete
+            </Button>
+            <Button type="submit" onClick={editHandler}>
+              Update
+            </Button>
+          </DialogActions>
+        </form>
       </Dialog>
     </div>
   );
