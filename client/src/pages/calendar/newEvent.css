@@ -1,4 +1,7 @@
 .newEvent {
   flex: 4;
   padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }

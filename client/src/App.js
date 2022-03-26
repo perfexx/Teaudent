@@ -33,6 +33,7 @@ function App() {
           <Route path="/topics" element={<Topics />} />
           <Route path="/topic/:userId" element={<EditTopic />} />
           <Route path="/showevents" element={<ShowEvents />} />
+
           <Route path="/newevent" element={<NewEvent />} />
         </Routes>
       </div>
