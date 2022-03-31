@@ -11,33 +11,23 @@ import {
   Grading,
   EventAvailable,
   School,
+  KeyboardArrowDown,
   KeyboardArrowRight,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const [expand, setExpand] = useState({
-    menu1: true,
-    menu2: false,
-    menu3: false,
-    menu4: false,
-    menu5: false,
-    menu6: false,
-    menu7: false,
-    menu8: false,
-    menu9: false,
-    menu10: false,
-  });
+  const [expand, setExpand] = useState(false);
 
-  // const handleExpand = (menu_id, e) => {
-  // const eve = e.currentTarget.dataset.id;
-  // console.log(eve);
-  // console.log(expand.menu1);
-  // setExpand({ expand.menu_id: true });
-  // console.log(menu_id);
-  // console.log(e);
-  // setExpand({ ...expand, menu1: !expand.menu1 });
-  // };
+  const handleExpand = (e) => {
+    // console.log(e);
+    // e.stopPropagation();
+    setExpand(!expand);
+    // setExpand((expand) => ({
+    //   ...expand,
+    //   [index]: !expand[index],
+    // }));
+  };
 
   return (
     <div className="sidebar">
@@ -46,23 +36,19 @@ const Sidebar = () => {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <Link to="/" className="link">
-              <li className={`sidebarListItem ${expand.menu1 ? "active" : ""}`}>
+              <li className="sidebarListItem active">
                 <Home className="sidebarIcon" />
                 Home
               </li>
             </Link>
 
-            <li
-              className="sidebarListItem"
-              onClick={() => setExpand({ ...expand, menu2: !expand.menu2 })}
-            >
+            <li className="sidebarListItem" onClick={(e) => handleExpand(e)}>
               <PermIdentity className="sidebarIcon" />
               Students
-              <KeyboardArrowRight
-                className={`sidebarArrow ${expand.menu2 ? "active" : ""}`}
-              />
+              <KeyboardArrowRight className="sidebarArrow" />
             </li>
-            <ul className={`sidebarSubItems ${expand.menu2 ? "active" : ""}`}>
+            {/* <ul className="sidebarSubItems"> */}
+            <ul className={`sidebarSubItems ${expand ? "active" : ""}`}>
               <Link to="/students" className="link">
                 <li className="sidebarSubListItem">List</li>
               </Link>
@@ -70,18 +56,13 @@ const Sidebar = () => {
                 <li className="sidebarSubListItem">Create</li>
               </Link>
             </ul>
-
-            <li
-              className="sidebarListItem"
-              onClick={() => setExpand({ ...expand, menu3: !expand.menu3 })}
-            >
+            <li className="sidebarListItem" onClick={(e) => handleExpand(e)}>
               <Quiz className="sidebarIcon" />
               Quiz
-              <KeyboardArrowRight
-                className={`sidebarArrow ${expand.menu3 ? "active" : ""}`}
-              />
+              <KeyboardArrowRight className="sidebarArrow" />
             </li>
-            <ul className={`sidebarSubItems ${expand.menu3 ? "active" : ""}`}>
+            {/* <ul className="sidebarSubItems"> */}
+            <ul className={`sidebarSubItems ${expand ? "active" : ""}`}>
               <Link to="/showquiz" className="link">
                 <li className="sidebarSubListItem">My Quiz</li>
               </Link>
@@ -89,18 +70,13 @@ const Sidebar = () => {
                 <li className="sidebarSubListItem">New Quiz</li>
               </Link>
             </ul>
-
-            <li
-              className="sidebarListItem"
-              onClick={() => setExpand({ ...expand, menu4: !expand.menu4 })}
-            >
+            <li className="sidebarListItem">
               <Forum className="sidebarIcon" />
               Forum
-              <KeyboardArrowRight
-                className={`sidebarArrow ${expand.menu4 ? "active" : ""}`}
-              />
+              <KeyboardArrowRight className="sidebarArrow" />
             </li>
-            <ul className={`sidebarSubItems ${expand.menu4 ? "active" : ""}`}>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
               <Link to="/topics" className="link">
                 <li className="sidebarSubListItem">My Topics</li>
               </Link>
@@ -113,17 +89,12 @@ const Sidebar = () => {
               Reports
             </li>
 
-            <li
-              className="sidebarListItem"
-              onClick={() => setExpand({ ...expand, menu6: !expand.menu6 })}
-            >
+            <li className="sidebarListItem">
               <EventAvailable className="sidebarIcon" />
               Calendar
-              <KeyboardArrowRight
-                className={`sidebarArrow ${expand.menu6 ? "active" : ""}`}
-              />
             </li>
-            <ul className={`sidebarSubItems ${expand.menu6 ? "active" : ""}`}>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
               <Link to="/showevents" className="link">
                 <li className="sidebarSubListItem">My Events</li>
               </Link>
@@ -137,15 +108,14 @@ const Sidebar = () => {
           <ul className="sidebarList">
             <li
               className="sidebarListItem"
-              onClick={() => setExpand({ ...expand, menu7: !expand.menu7 })}
+              // onClick={(data2) => handleExpand(data2)}
             >
               <School className="sidebarIcon" />
               Courses
-              <KeyboardArrowRight
-                className={`sidebarArrow ${expand.menu7 ? "active" : ""}`}
-              />
+              <KeyboardArrowRight className="sidebarArrow" />
             </li>
-            <ul className={`sidebarSubItems ${expand.menu7 ? "active" : ""}`}>
+            <ul className="sidebarSubItems">
+              {/* <ul className={`sidebarSubItems ${expand.data2 ? "active" : ""}`}> */}
               <Link to="/courses" className="link">
                 <li className="sidebarSubListItem">My Courses</li>
               </Link>
