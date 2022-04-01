@@ -7,9 +7,9 @@ let quizSchema = new Schema(
     },
     answerOptions: [
       { answerText: { type: String }, isCorrect: { type: Boolean } },
-      { answerText: { type: String }, isCorrect: { type: Boolean } },
-      { answerText: { type: String }, isCorrect: { type: Boolean } },
-      { answerText: { type: String }, isCorrect: { type: Boolean } },
+      // { answerText: { type: String }, isCorrect: { type: Boolean } },
+      // { answerText: { type: String }, isCorrect: { type: Boolean } },
+      // { answerText: { type: String }, isCorrect: { type: Boolean } },
     ],
   },
   {

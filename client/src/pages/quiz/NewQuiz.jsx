@@ -24,6 +24,7 @@ const NewQuiz = () => {
         { answerText: data.answerText, isCorrect: data.isCorrect },
       ],
     };
+
     axios
       .post("http://localhost:4000/quiz/create-quiz", quizObject)
       .then((res) =>
@@ -53,7 +54,28 @@ const NewQuiz = () => {
             }
           />
 
-          <label>Answer Text</label>
+          <label>Answer Text1</label>
+          <input
+            type="text"
+            // placeholder="john"
+            value={data.answerOptions.answerText}
+            onChange={(event) => setData({ ...data })}
+          />
+          <label>Answer Text2</label>
+          <input
+            type="text"
+            // placeholder="john"
+            value={data.answerOptions.answerText}
+            onChange={(event) => setData({ ...data })}
+          />
+          <label>Answer Text3</label>
+          <input
+            type="text"
+            // placeholder="john"
+            value={data.answerOptions.answerText}
+            onChange={(event) => setData({ ...data })}
+          />
+          <label>Answer Text4</label>
           <input
             type="text"
             // placeholder="john"
@@ -62,44 +84,51 @@ const NewQuiz = () => {
           />
         </div>
 
-        <div className="newUserItem">
-          <label>Gender</label>
-          <div className="newUserGender">
-            <input
-              type="radio"
-              name="gender"
-              id="male"
-              value="male"
-              onChange={(event) =>
-                setData({ ...data, gender: event.target.value })
-              }
-            />
-            <label For="male">Male</label>
-            <input
-              type="radio"
-              name="gender"
-              id="female"
-              value="female"
-              onChange={(event) =>
-                setData({ ...data, gender: event.target.value })
-              }
-            />
-            <label For="female">Female</label>
-            <input
-              type="radio"
-              name="gender"
-              id="other"
-              value="other"
-              onChange={(event) =>
-                setData({ ...data, gender: event.target.value })
-              }
-            />
-            <label For="other">Other</label>
-          </div>
+        <div className="newUserGender">
+          <label>Choose Correct Answer</label>
+          <input
+            type="radio"
+            name="gender"
+            id="male"
+            value="male"
+            onChange={(event) =>
+              setData({ ...data, gender: event.target.value })
+            }
+          />
+          <input
+            type="radio"
+            name="gender"
+            id="female"
+            value="female"
+            onChange={(event) =>
+              setData({ ...data, gender: event.target.value })
+            }
+          />
+          <input
+            type="radio"
+            name="gender"
+            id="other"
+            value="other"
+            onChange={(event) =>
+              setData({ ...data, gender: event.target.value })
+            }
+          />
+          <input
+            type="radio"
+            name="gender"
+            id="other"
+            value="other"
+            onChange={(event) =>
+              setData({ ...data, gender: event.target.value })
+            }
+          />
         </div>
 
         <button className="newUserButton" type="submit">
-          Create
+          Add More Question
+        </button>
+        <button className="newUserButton" type="submit">
+          Create Quiz
         </button>
       </form>
     </div>

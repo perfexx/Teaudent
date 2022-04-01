@@ -36,7 +36,7 @@ app.use("/students", studentRoute);
 app.use("/courses", coursesRoute);
 app.use("/topics", topicsRoute);
 app.use("/events", eventsRoute);
-app.use("/quiz", eventsRoute);
+app.use("/quiz", quizRoute);
 
 // PORT
 const port = process.env.PORT || 4000;
