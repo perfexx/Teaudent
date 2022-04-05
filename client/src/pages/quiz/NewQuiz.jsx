@@ -42,8 +42,8 @@ const NewQuiz = () => {
   return (
     <div className="newQuiz">
       <h1>newQuiz</h1>
-      <form className="newUserForm" onSubmit={onSubmit}>
-        <div className="newUserItem">
+      <form className="newQuizForm" onSubmit={onSubmit}>
+        <div className="newQuizItem">
           <label>Question Text</label>
           <input
             type="text"
@@ -84,7 +84,7 @@ const NewQuiz = () => {
           />
         </div>
 
-        <div className="newUserGender">
+        <div className="newQuizGender">
           <label>Choose Correct Answer</label>
           <input
             type="radio"
@@ -124,10 +124,10 @@ const NewQuiz = () => {
           />
         </div>
 
-        <button className="newUserButton" type="submit">
+        <button className="newQuizButton" type="submit">
           Add More Question
         </button>
-        <button className="newUserButton" type="submit">
+        <button className="newQuizButton" type="submit">
           Create Quiz
         </button>
       </form>

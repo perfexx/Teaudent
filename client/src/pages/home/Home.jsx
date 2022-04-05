@@ -11,13 +11,8 @@ export default function Home() {
   return (
     <div className="home">
       <CourseInfo />
+      <Chart />
       <CommingEvents />
-      <Chart
-        data={userData}
-        title="User Analytics"
-        grid
-        dataKey="Active User"
-      />
       <div className="homeWidgets">
         <WidgetSm />
         <WidgetLg />
