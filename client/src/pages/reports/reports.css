@@ -1,0 +1,83 @@
+.reports {
+  flex: 4;
+  padding: 20px;
+}
+.courseItem {
+  /* flex: 0 0 300px; */
+  margin: 0px 20px 30px;
+  overflow: hidden;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  /* cursor: pointer; */
+  -webkit-box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.49);
+  box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.49);
+}
+.courseItemImg {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.courseTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+.courseDescContainer {
+  display: flex;
+  align-items: center;
+  margin: 8px 20px;
+}
+
+.courseDataContainer {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.courseData {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.courseDataRate {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.courseIcon {
+  font-size: 16px !important;
+  margin-left: 5px;
+  color: green;
+}
+
+.courseIcon.negative {
+  color: red;
+}
+
+.courseSub {
+  font-size: 15px;
+  color: gray;
+  margin-left: 20px;
+}
+
+.courseHandleContainer {
+  display: flex;
+  /* align-items: center; */
+  margin: 8px 8px 0px 20px;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.courseUpdateIcon {
+  color: rgb(9, 115, 185);
+  cursor: pointer;
+}
+
+.courseDeleteIcon {
+  cursor: pointer;
+  margin-left: 10px;
+  color: red;
+}

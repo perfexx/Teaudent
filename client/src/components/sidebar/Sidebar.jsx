@@ -108,10 +108,13 @@ const Sidebar = () => {
                 <li className="sidebarSubListItem">Create Topic</li>
               </Link>
             </ul>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Reports
-            </li>
+
+            <Link to="/reports" className="link">
+              <li className="sidebarListItem">
+                <Timeline className="sidebarIcon" />
+                Reports
+              </li>
+            </Link>
 
             <li
               className="sidebarListItem"

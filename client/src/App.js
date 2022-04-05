@@ -16,6 +16,7 @@ import ShowEvents from "./pages/calendar/ShowEvents";
 import NewEvent from "./pages/calendar/NewEvent";
 import NewQuiz from "./pages/quiz/NewQuiz";
 import ShowQuiz from "./pages/quiz/ShowQuiz";
+import Reports from "./pages/reports/Reports";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/newevent" element={<NewEvent />} />
           <Route path="/showquiz" element={<ShowQuiz />} />
           <Route path="/newquiz" element={<NewQuiz />} />
+          <Route path="/reports" element={<Reports />} />
         </Routes>
       </div>
     </Router>
