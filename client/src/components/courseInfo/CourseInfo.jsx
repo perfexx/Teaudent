@@ -8,36 +8,38 @@ import {
 } from "@mui/icons-material";
 import courseImage from "../../img/courseImg.png";
 import axios from "axios";
-import { Tooltip, Snackbar } from "@mui/material";
-import MuiAlert from "@mui/material/Alert";
+import { Tooltip } from "@mui/material";
+// import MuiAlert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+// });
 
 const CourseInfo = () => {
   const [course, setCourse] = useState([]);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+  // const handleClick = () => {
+  // setOpen(true);
+  // };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
+  // const handleClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+  //   setOpen(false);
+  // };
 
   const handleDelete = (_id) => {
     axios
       .delete("http://localhost:4000/courses/delete-course/" + _id)
-      .then((res) => handleClick())
+      .then((res) => toast.success("Course Deleted Successfully !"))
       .catch((error) => {
         console.log(error);
       });
+
     setCourse(course.filter((item) => item._id !== _id));
   };
 
@@ -53,11 +55,12 @@ const CourseInfo = () => {
 
   return (
     <div className="course">
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+      <Toaster />
+      {/* <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Course deleted Successfully !
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
       {course.map((d) => {
         return (
           <div className="courseItem" key={d._id}>
@@ -69,7 +72,7 @@ const CourseInfo = () => {
             <div className="courseDataContainer">
               <span className="courseData">2,145</span>
               <span className="courseDataRate">
-                -11.4
+                Participants
                 <ArrowDownward className="courseIcon negative" />
               </span>
             </div>

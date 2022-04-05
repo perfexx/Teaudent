@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./newUser.css";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const NewUser = () => {
   const [data, setData] = useState({
@@ -40,10 +41,12 @@ const NewUser = () => {
           active: "",
         })
       );
+    toast.success("Student Created Successfully !");
   };
 
   return (
     <div className="newUser">
+      <Toaster />
       <h1 className="newUserTitle">Create New Student</h1>
       <form className="newUserForm" onSubmit={onSubmit}>
         <div className="newUserItem">

@@ -4,6 +4,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./topics.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const Topics = () => {
   const [topic, setTopic] = useState([]);
@@ -11,10 +12,11 @@ const Topics = () => {
   const handleDelete = (_id) => {
     axios
       .delete("http://localhost:4000/topics/delete-topic/" + _id)
-      .then((res) => window.alert("topic deleted succesfully !"))
+      .then((res) => toast.success("Topic Deleted Successfully !"))
       .catch((error) => {
         console.log(error);
       });
+
     setTopic(topic.filter((item) => item._id !== _id));
   };
 
@@ -60,6 +62,7 @@ const Topics = () => {
 
   return (
     <div className="topics">
+      <Toaster />
       {topic.length ? (
         <DataGrid
           rows={topic}

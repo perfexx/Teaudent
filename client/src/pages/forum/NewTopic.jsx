@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./newTopic.css";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const NewTopic = () => {
   const [data, setData] = useState({
@@ -34,9 +35,11 @@ const NewTopic = () => {
           lastpost: "",
         })
       );
+    toast.success("Topic Created Successfully !");
   };
   return (
     <div className="newTopic">
+      <Toaster />
       <h1 className="newTopicTitle">Create New Topic</h1>
       <form className="newTopicForm" onSubmit={onSubmit}>
         <div className="newTopicItem">

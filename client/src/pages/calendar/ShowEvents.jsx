@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import DatePicker from "@mui/lab/DatePicker";
 import AdapterMoment from "@mui/lab/AdapterMoment";
+import toast, { Toaster } from "react-hot-toast";
 
 const localizer = momentLocalizer(moment);
 
@@ -75,7 +76,7 @@ const ShowEvents = () => {
         eventObject
       )
       .then((res) => setOpen(false));
-
+    toast.success("Event Deleted Successfully !");
     window.location.reload(true);
   };
 
@@ -86,11 +87,13 @@ const ShowEvents = () => {
       .catch((error) => {
         console.log(error);
       });
+    toast.success("Event Deleted Successfully !");
     window.location.reload(true);
   };
 
   return (
     <div className="showEvents">
+      <Toaster />
       <Calendar
         localizer={localizer}
         events={events}

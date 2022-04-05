@@ -3,11 +3,12 @@ import axios from "axios";
 import { useMatch, useNavigate } from "react-router-dom";
 import "./editCourse.css";
 import { Snackbar } from "@mui/material";
-import MuiAlert from "@mui/material/Alert";
+import toast, { Toaster } from "react-hot-toast";
+// import MuiAlert from "@mui/material/Alert";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+// });
 
 const EditCourse = () => {
   const navigate = useNavigate();
@@ -19,18 +20,18 @@ const EditCourse = () => {
     material: "",
   });
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
+  // const handleClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+  //   setOpen(false);
+  // };
 
   const {
     params: { id },
@@ -65,15 +66,17 @@ const EditCourse = () => {
     axios
       .put("http://localhost:4000/courses/update-course/" + id, courseObject)
       .then((res) => navigate("/courses"));
+    toast.success("Course Updated Successfully !");
   };
 
   return (
     <div className="editCourse">
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+      <Toaster />
+      {/* <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Course Updated Successfully !
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
       <h1 className="editCourseTitle">EditCourse</h1>
       <form className="editCourseForm" onSubmit={onSubmit}>
         <div className="editCourseItem">
@@ -132,11 +135,7 @@ const EditCourse = () => {
           />
         </div>
 
-        <button
-          className="editCourseButton"
-          type="submit"
-          onClick={handleClick}
-        >
+        <button className="editCourseButton" type="submit">
           Update
         </button>
       </form>

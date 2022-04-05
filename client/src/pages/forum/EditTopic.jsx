@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./editTopic.css";
 import { useNavigate, useMatch } from "react-router-dom";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const EditTopic = () => {
   const navigate = useNavigate();
@@ -38,11 +39,13 @@ const EditTopic = () => {
     axios
       .put("http://localhost:4000/topics/update-topic/" + id, topicObject)
       .then((res) => {
+        toast.success("Topic Updated Succesfully !");
         navigate("/topics");
       });
   };
   return (
     <div className="editTopic">
+      <Toaster />
       <h1 className="editTopicTitle">Edit Topic</h1>
       <form className="editTopicForm" onSubmit={onSubmit}>
         <div className="editTopicItem">

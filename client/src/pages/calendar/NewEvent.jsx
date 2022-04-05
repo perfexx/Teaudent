@@ -7,6 +7,7 @@ import AdapterMoment from "@mui/lab/AdapterMoment";
 import moment from "moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const NewEvent = () => {
   const navigate = useNavigate();
@@ -33,10 +34,12 @@ const NewEvent = () => {
         }),
       navigate("/showevents")
     );
+    toast.success("Event Created Successfully !");
   };
 
   return (
     <div className="newEvent">
+      <Toaster />
       <form onSubmit={onSubmit}>
         <TextField
           label="Title"

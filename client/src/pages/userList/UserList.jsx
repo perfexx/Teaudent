@@ -6,6 +6,7 @@ import axios from "axios";
 import "./userList.css";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
+import toast, { Toaster } from "react-hot-toast";
 
 const UserList = () => {
   const [student, setStudent] = useState([]);
@@ -13,10 +14,11 @@ const UserList = () => {
   const handleDelete = (_id) => {
     axios
       .delete("http://localhost:4000/students/delete-student/" + _id)
-      .then((res) => window.alert("Student deleted succesfully !"))
+      .then((res) => toast.success("Student Deleted Succesfully !"))
       .catch((error) => {
         console.log(error);
       });
+
     setStudent(student.filter((item) => item._id !== _id));
   };
 
@@ -62,6 +64,7 @@ const UserList = () => {
 
   return (
     <div className="usersList">
+      <Toaster />
       {/* <Link to="/newuser">
         <button className="userAddButton">Create</button>
       </Link> */}

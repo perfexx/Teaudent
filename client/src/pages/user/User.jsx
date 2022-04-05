@@ -10,6 +10,7 @@ import {
   PhoneAndroid,
   Publish,
 } from "@mui/icons-material";
+import toast, { Toaster } from "react-hot-toast";
 
 const User = () => {
   const navigate = useNavigate();
@@ -62,12 +63,14 @@ const User = () => {
     axios
       .put("http://localhost:4000/students/update-student/" + id, studentObject)
       .then((res) => {
+        toast.success("Student Updated Succesfully !");
         navigate("/students");
       });
   };
 
   return (
     <div className="user">
+      <Toaster />
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit Student</h1>
         {/* <Link to="/newuser">
