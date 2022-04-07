@@ -17,6 +17,9 @@ import NewEvent from "./pages/calendar/NewEvent";
 import NewQuiz from "./pages/quiz/NewQuiz";
 import ShowQuiz from "./pages/quiz/ShowQuiz";
 import Reports from "./pages/reports/Reports";
+import Announce from "./pages/announcements/Announce";
+import NewAnnounce from "./pages/announcements/NewAnnounce";
+import EditAnnounce from "./pages/announcements/EditAnnounce";
 
 function App() {
   return (
@@ -40,6 +43,9 @@ function App() {
           <Route path="/showquiz" element={<ShowQuiz />} />
           <Route path="/newquiz" element={<NewQuiz />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/announcements" element={<Announce />} />
+          <Route path="/newannounce" element={<NewAnnounce />} />
+          <Route path="/announcements/:userId" element={<EditAnnounce />} />
         </Routes>
       </div>
     </Router>

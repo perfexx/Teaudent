@@ -27,6 +27,7 @@ const Sidebar = () => {
     menu8: false,
     menu9: false,
     menu10: false,
+    menu11: false,
   });
 
   // const handleExpand = (menu_id, e) => {
@@ -132,6 +133,25 @@ const Sidebar = () => {
               </Link>
               <Link to="/newevent" className="link">
                 <li className="sidebarSubListItem">New Event</li>
+              </Link>
+            </ul>
+
+            <li
+              className="sidebarListItem"
+              onClick={() => setExpand({ ...expand, menu11: !expand.menu11 })}
+            >
+              <EventAvailable className="sidebarIcon" />
+              Announcements
+              <KeyboardArrowRight
+                className={`sidebarArrow ${expand.menu11 ? "active" : ""}`}
+              />
+            </li>
+            <ul className={`sidebarSubItems ${expand.menu11 ? "active" : ""}`}>
+              <Link to="/announcements" className="link">
+                <li className="sidebarSubListItem">Announcements</li>
+              </Link>
+              <Link to="/newannounce" className="link">
+                <li className="sidebarSubListItem">New Announce</li>
               </Link>
             </ul>
           </ul>

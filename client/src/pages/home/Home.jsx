@@ -5,14 +5,14 @@ import Chart from "../../components/chart/Chart";
 import { userData } from "../../dummyData";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
-import CommingEvents from "../../components/events/CommingEvents";
+import Announcements from "../../components/announcements/Announcements";
 
 export default function Home() {
   return (
     <div className="home">
       <CourseInfo />
       <Chart />
-      <CommingEvents />
+      <Announcements />
       <div className="homeWidgets">
         <WidgetSm />
         <WidgetLg />

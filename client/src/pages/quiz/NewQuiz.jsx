@@ -44,42 +44,42 @@ const NewQuiz = () => {
       <h1>newQuiz</h1>
       <form className="newQuizForm" onSubmit={onSubmit}>
         <div className="newQuizItem">
-          <label>Question Text</label>
+          <label>Question Text 1</label>
           <input
             type="text"
-            // placeholder="john"
-            value={data.questionText}
             onChange={(event) =>
               setData({ ...data, questionText: event.target.value })
             }
           />
 
-          <label>Answer Text1</label>
+          <label>Answer Text 1</label>
           <input
             type="text"
             // placeholder="john"
-            value={data.answerOptions.answerText}
+            // value={data.answerOptions.answerText}
+            onChange={(event) =>
+              setData({ ...data, isCorrect: event.target.value })
+            }
+          />
+          <label>Answer Text 2</label>
+          <input
+            type="text"
+            // placeholder="john"
+            // value={data.answerOptions.answerText}
             onChange={(event) => setData({ ...data })}
           />
-          <label>Answer Text2</label>
+          <label>Answer Text 3</label>
           <input
             type="text"
             // placeholder="john"
-            value={data.answerOptions.answerText}
+            // value={data.answerOptions.answerText}
             onChange={(event) => setData({ ...data })}
           />
-          <label>Answer Text3</label>
+          <label>Answer Text 4</label>
           <input
             type="text"
             // placeholder="john"
-            value={data.answerOptions.answerText}
-            onChange={(event) => setData({ ...data })}
-          />
-          <label>Answer Text4</label>
-          <input
-            type="text"
-            // placeholder="john"
-            value={data.answerOptions.answerText}
+            // value={data.answerOptions.answerText}
             onChange={(event) => setData({ ...data })}
           />
         </div>
@@ -88,48 +88,49 @@ const NewQuiz = () => {
           <label>Choose Correct Answer</label>
           <input
             type="radio"
-            name="gender"
-            id="male"
-            value="male"
+            name="answer1"
+            id="ans1"
+            value="ans1"
             onChange={(event) =>
               setData({ ...data, gender: event.target.value })
             }
           />
           <input
             type="radio"
-            name="gender"
-            id="female"
-            value="female"
+            name="answer1"
+            id="ans2"
+            value="ans2"
             onChange={(event) =>
               setData({ ...data, gender: event.target.value })
             }
           />
           <input
             type="radio"
-            name="gender"
-            id="other"
-            value="other"
+            name="answer1"
+            id="ans3"
+            value="ans3"
             onChange={(event) =>
               setData({ ...data, gender: event.target.value })
             }
           />
           <input
             type="radio"
-            name="gender"
-            id="other"
-            value="other"
+            name="answer1"
+            id="ans4"
+            value="ans4"
             onChange={(event) =>
               setData({ ...data, gender: event.target.value })
             }
           />
         </div>
 
-        <button className="newQuizButton" type="submit">
+        {/* <button className="newQuizButton" type="submit">
           Add More Question
-        </button>
+        </button> */}
         <button className="newQuizButton" type="submit">
           Create Quiz
         </button>
+        <p>{JSON.stringify(data)}</p>
       </form>
     </div>
   );

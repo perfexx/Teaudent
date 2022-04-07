@@ -9,6 +9,7 @@ const coursesRoute = require("../server/routes/courses.route");
 const topicsRoute = require("../server/routes/topics.route");
 const eventsRoute = require("../server/routes/events.route");
 const quizRoute = require("../server/routes/quiz.route");
+const announcementsRoute = require("../server/routes/announcements.route");
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -37,6 +38,7 @@ app.use("/courses", coursesRoute);
 app.use("/topics", topicsRoute);
 app.use("/events", eventsRoute);
 app.use("/quiz", quizRoute);
+app.use("/announcements", announcementsRoute);
 
 // PORT
 const port = process.env.PORT || 4000;
