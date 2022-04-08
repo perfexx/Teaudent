@@ -10,7 +10,7 @@ class ApexChart extends React.Component {
     this.state = {
       seriesSpark3: [
         {
-          data: [45, 52, 38, 24, 33, 26, 21, 20],
+          data: [45, 52, 38, 14, 33, 26, 42, 20],
         },
       ],
       optionsSpark3: {
@@ -36,14 +36,14 @@ class ApexChart extends React.Component {
           min: 0,
         },
         title: {
-          text: "$135,965",
+          text: "Analytics",
           offsetX: 0,
           style: {
-            fontSize: "24px",
+            fontSize: "20px",
           },
         },
         subtitle: {
-          text: "Profits",
+          text: "Numbers",
           offsetX: 0,
           style: {
             fontSize: "14px",
@@ -63,6 +63,20 @@ class ApexChart extends React.Component {
           height: 35,
           sparkline: {
             enabled: true,
+          },
+        },
+        title: {
+          text: "Analytics",
+          offsetX: 0,
+          style: {
+            fontSize: "20px",
+          },
+        },
+        subtitle: {
+          text: "Numbers",
+          offsetX: 0,
+          style: {
+            fontSize: "14px",
           },
         },
         tooltip: {
@@ -99,6 +113,20 @@ class ApexChart extends React.Component {
             enabled: true,
           },
         },
+        title: {
+          text: "Analytics",
+          offsetX: 0,
+          style: {
+            fontSize: "20px",
+          },
+        },
+        subtitle: {
+          text: "Numbers",
+          offsetX: 0,
+          style: {
+            fontSize: "14px",
+          },
+        },
         tooltip: {
           fixed: {
             enabled: false,
@@ -129,24 +157,18 @@ class ApexChart extends React.Component {
             enabled: true,
           },
         },
-        stroke: {
-          width: 1,
-        },
-        tooltip: {
-          fixed: {
-            enabled: false,
+        title: {
+          text: "Analytics",
+          offsetX: 0,
+          style: {
+            fontSize: "20px",
           },
         },
-      },
-
-      series4: [43, 32, 12, 9],
-      options4: {
-        chart: {
-          type: "donut",
-          width: 40,
-          height: 40,
-          sparkline: {
-            enabled: true,
+        subtitle: {
+          text: "Numbers",
+          offsetX: 0,
+          style: {
+            fontSize: "14px",
           },
         },
         stroke: {
@@ -158,152 +180,100 @@ class ApexChart extends React.Component {
           },
         },
       },
-
-      series5: [
+      series: [
         {
-          data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54],
+          name: "Session Duration",
+          data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10],
+        },
+        {
+          name: "Page Views",
+          data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
+        },
+        {
+          name: "Total Visits",
+          data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47],
         },
       ],
-      options5: {
+      options: {
         chart: {
-          type: "bar",
-          width: 100,
-          height: 35,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        plotOptions: {
-          bar: {
-            columnWidth: "80%",
-          },
-        },
-        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-        xaxis: {
-          crosshairs: {
-            width: 1,
-          },
-        },
-        tooltip: {
-          fixed: {
+          height: 350,
+          type: "line",
+          zoom: {
             enabled: false,
           },
-          x: {
-            show: false,
-          },
-          y: {
-            title: {
-              formatter: function (seriesName) {
-                return "";
-              },
-            },
-          },
-          marker: {
-            show: false,
-          },
-        },
-      },
-
-      series6: [
-        {
-          data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14],
-        },
-      ],
-      options6: {
-        chart: {
-          type: "bar",
-          width: 100,
-          height: 35,
-          sparkline: {
-            enabled: true,
-          },
-        },
-        plotOptions: {
-          bar: {
-            columnWidth: "80%",
-          },
-        },
-        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-        xaxis: {
-          crosshairs: {
-            width: 1,
-          },
-        },
-        tooltip: {
-          fixed: {
-            enabled: false,
-          },
-          x: {
-            show: false,
-          },
-          y: {
-            title: {
-              formatter: function (seriesName) {
-                return "";
-              },
-            },
-          },
-          marker: {
-            show: false,
-          },
-        },
-      },
-
-      series7: [45],
-      options7: {
-        chart: {
-          type: "radialBar",
-          width: 50,
-          height: 50,
-          sparkline: {
-            enabled: true,
-          },
+          fontFamily: "Source Sans Pro, sans-serif",
         },
         dataLabels: {
           enabled: false,
         },
-        plotOptions: {
-          radialBar: {
-            hollow: {
-              margin: 0,
-              size: "50%",
-            },
-            track: {
-              margin: 0,
-            },
-            dataLabels: {
-              show: false,
-            },
+        stroke: {
+          width: [5, 7, 5],
+          curve: "straight",
+          dashArray: [0, 8, 5],
+        },
+        title: {
+          text: "Page Statistics",
+          align: "left",
+        },
+        legend: {
+          tooltipHoverFormatter: function (val, opts) {
+            return (
+              val +
+              " - " +
+              opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
+              ""
+            );
           },
         },
-      },
-
-      series8: [53, 67],
-      options8: {
-        chart: {
-          type: "radialBar",
-          width: 40,
-          height: 40,
-          sparkline: {
-            enabled: true,
+        markers: {
+          size: 0,
+          hover: {
+            sizeOffset: 6,
           },
         },
-        dataLabels: {
-          enabled: false,
+        xaxis: {
+          categories: [
+            "01 Jan",
+            "02 Jan",
+            "03 Jan",
+            "04 Jan",
+            "05 Jan",
+            "06 Jan",
+            "07 Jan",
+            "08 Jan",
+            "09 Jan",
+            "10 Jan",
+            "11 Jan",
+            "12 Jan",
+          ],
         },
-        plotOptions: {
-          radialBar: {
-            hollow: {
-              margin: 0,
-              size: "50%",
+        tooltip: {
+          y: [
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " (mins)";
+                },
+              },
             },
-            track: {
-              margin: 1,
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " per session";
+                },
+              },
             },
-            dataLabels: {
-              show: false,
+            {
+              title: {
+                formatter: function (val) {
+                  return val;
+                },
+              },
             },
-          },
+          ],
+        },
+        grid: {
+          borderColor: "#f1f1f1",
         },
       },
     };
@@ -312,150 +282,60 @@ class ApexChart extends React.Component {
   render() {
     return (
       <div className="reports">
-        <div className="courseItem">
-          <span className="courseTitle">test</span>
-          <div className="courseDescContainer">
-            <span className="courseDesc">test2</span>
+        <div className="reportContainer">
+          <div className="reportItem">
+            <div className="reportHandleContainer">
+              <ReactApexChart
+                options={this.state.optionsSpark3}
+                series={this.state.seriesSpark3}
+                type="area"
+                height={180}
+              />
+            </div>
           </div>
-          <div className="courseDataContainer">
-            <span className="courseData">2,145</span>
-            <span className="courseDataRate">
-              Participants
-              <ArrowDownward className="courseIcon negative" />
-            </span>
+
+          <div className="reportItem">
+            <div className="reportHandleContainer">
+              <ReactApexChart
+                options={this.state.options2}
+                series={this.state.series2}
+                type="bar"
+                height={180}
+                // width={100}
+              />
+            </div>
           </div>
-          <span className="courseSub">Compared to last month</span>
-          <div className="courseHandleContainer">
-            <div class="row">
-              <div class="col-md-4">
-                <div id="chart-spark1">
-                  <ReactApexChart
-                    options={this.state.optionsSpark3}
-                    series={this.state.seriesSpark3}
-                    type="area"
-                    height={160}
-                  />
-                </div>
-              </div>
+          <div className="reportItem">
+            <div className="reportHandleContainer">
+              <ReactApexChart
+                options={this.state.options1}
+                series={this.state.series1}
+                type="line"
+                height={180}
+                // width={100}
+              />
+            </div>
+          </div>
+
+          <div className="reportItem">
+            <div className="reportHandleContainer">
+              <ReactApexChart
+                options={this.state.options3}
+                series={this.state.series3}
+                type="pie"
+                height={180}
+                // width={100}
+              />
             </div>
           </div>
         </div>
-
-        <div class="row">
-          <table>
-            <thead>
-              <th>Total Value</th>
-              <th>Percentage of Portfolio</th>
-              <th>Last 10 days</th>
-              <th>Volume</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$32,554</td>
-                <td>15%</td>
-                <td>
-                  <div id="chart-1">
-                    <ReactApexChart
-                      options={this.state.options1}
-                      series={this.state.series1}
-                      type="line"
-                      height={35}
-                      width={100}
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div id="chart-5">
-                    <ReactApexChart
-                      options={this.state.options5}
-                      series={this.state.series5}
-                      type="bar"
-                      height={35}
-                      width={100}
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>$23,533</td>
-                <td>7%</td>
-                <td>
-                  <div id="chart-2">
-                    <ReactApexChart
-                      options={this.state.options2}
-                      series={this.state.series2}
-                      type="line"
-                      height={35}
-                      width={100}
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div id="chart-6">
-                    <ReactApexChart
-                      options={this.state.options6}
-                      series={this.state.series6}
-                      type="bar"
-                      height={35}
-                      width={100}
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>$54,276</td>
-                <td>9%</td>
-                <td>
-                  <div id="chart-3">
-                    <ReactApexChart
-                      options={this.state.options3}
-                      series={this.state.series3}
-                      type="pie"
-                      height={40}
-                      width={40}
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div id="chart-7">
-                    <ReactApexChart
-                      options={this.state.options7}
-                      series={this.state.series7}
-                      type="radialBar"
-                      height={50}
-                      width={50}
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>$11,533</td>
-                <td>2%</td>
-                <td>
-                  <div id="chart-4">
-                    <ReactApexChart
-                      options={this.state.options4}
-                      series={this.state.series4}
-                      type="donut"
-                      height={40}
-                      width={40}
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div id="chart-8">
-                    <ReactApexChart
-                      options={this.state.options8}
-                      series={this.state.series8}
-                      type="radialBar"
-                      height={40}
-                      width={40}
-                    />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="reportItem">
+          <ReactApexChart
+            options={this.state.options}
+            series={this.state.series}
+            type="line"
+            height={350}
+          />
         </div>
       </div>
     );

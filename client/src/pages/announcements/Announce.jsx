@@ -23,7 +23,7 @@ const Announce = () => {
   const columns = [
     // { field: "id", headerName: "ID", width: 50 },
     { field: "announceName", headerName: "Title", width: 130 },
-    { field: "announceDesc", headerName: "Content", width: 300 },
+    { field: "announceDesc", headerName: "Content", width: 700 },
     // { field: "createdby", headerName: "Created By", width: 200 },
     // { field: "password", headerName: "Password", width: 130 },
     // { field: "replies", headerName: "Replies", width: 80 },

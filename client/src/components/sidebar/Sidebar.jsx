@@ -12,6 +12,7 @@ import {
   EventAvailable,
   School,
   KeyboardArrowRight,
+  Campaign,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
@@ -140,7 +141,7 @@ const Sidebar = () => {
               className="sidebarListItem"
               onClick={() => setExpand({ ...expand, menu11: !expand.menu11 })}
             >
-              <EventAvailable className="sidebarIcon" />
+              <Campaign className="sidebarIcon" />
               Announcements
               <KeyboardArrowRight
                 className={`sidebarArrow ${expand.menu11 ? "active" : ""}`}
